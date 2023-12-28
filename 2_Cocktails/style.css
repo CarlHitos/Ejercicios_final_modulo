@@ -1,0 +1,31 @@
+body {
+    background-color: rgb(31, 41, 46);
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+#statsChart {
+    width: 800px;
+    margin: 0 auto;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+h2:hover {
+        text-shadow: 2px 2px 3px rgb(0, 247, 255);
+}
+
+#myChart {
+    text-align: center;
+    align-items: center;
+    background-color: rgb(35, 54, 61);
+    /* color: rgb(30, 0, 255);
+    color: rgb(0, 255, 255);
+    color: rgb(0, 255, 13);
+    color: rgb(1, 90, 22);
+    color: rgb(43, 18, 89);
+    color: rgb(226, 255, 5); */
+}

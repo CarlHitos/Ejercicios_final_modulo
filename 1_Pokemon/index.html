@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeSearcher</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="searcher">
+        <div class="input">
+            <label for="pokemon"></label>
+            <input type="number" id="pokemon" name="pokemon" placeholder="Numero del Pokémon" />
+        </div>
+
+        <div>
+            <button id="search" type="submit">Go!</button>
+            <button id="randomSearch">Random Pokemon</button>
+        </div>
+    </div>
+    <div id="pokeInfo">
+        <h2 id="pokemonName"></h2>
+        <img id="pokemonImage" alt="Pokemon Image">
+    </div>
+    <div id="statsChart">
+        <canvas id="myChart"></canvas>
+        <p id="error-message"></p>
+    </div>
+</body>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"
+    integrity="sha512-ZwR1/gSZM3ai6vCdI+LVF1zSq/5HznD3ZSTk7kajkaj4D292NLuduDCO1c/NT8Id+jE58KYLKT7hXnbtryGmMg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./index.js"></script>
+
+</html>
