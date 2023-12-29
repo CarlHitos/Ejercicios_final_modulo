@@ -7,19 +7,24 @@ body {
     text-align: center;
 }
 
-h1 {
+h1, h2 {
     color: rgb(2, 5, 23);
-    filter: drop-shadow(0 0 0.75rem rgba(6, 247, 243, 0.969));
-    margin-bottom: 10px;
-
+    filter: drop-shadow(0 0 0.3rem rgba(6, 247, 243, 0.969));
+    margin-bottom: 30px;
 }
 
 #cocktailDetails {
-    display: none;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: opacity 2s ease-out, height 9s ease-out;
 }
 
 #cocktailDetails.show {
-    display: block;
+    opacity: 1;
+    height: auto;
+    visibility: visible;
 }
 
 #content {
@@ -93,7 +98,7 @@ h2:hover {
 
 #cocktailImage:hover {
     transform: scale(1.02);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 8px rgba(84, 255, 246, 0.445);
 }
 
 h3 {

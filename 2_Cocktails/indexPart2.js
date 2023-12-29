@@ -44,7 +44,7 @@ lastCocktails.forEach(cocktail => {
     const listItem = document.createElement('li');
     listItem.innerText = cocktail.strDrink;
     listItem.addEventListener('click', () => {
-        cocktailDetails.classList.toggle('show');
+        cocktailDetails.classList.add('show');
         showCocktailDetails(cocktail);
     });
     cocktailList.appendChild(listItem);
