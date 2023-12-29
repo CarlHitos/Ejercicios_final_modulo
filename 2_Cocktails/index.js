@@ -1,17 +1,20 @@
 const initChartLine = () => {
     const ctx = document.querySelector('#myChart');
-    const cocktailCountByYear = {};
+    const objCocktailByYear = {};
 
     cocktails.forEach((cocktail) => {
-        const year = new Date(cocktail.dateModified).getFullYear();
-        if (!cocktailCountByYear[year]) {
-            cocktailCountByYear[year] = 1;
-        } else {
-            cocktailCountByYear[year]++;
+        if (cocktail.dateModified) {
+            const year = new Date(cocktail.dateModified).getFullYear();
+            if (!objCocktailByYear[year]) {
+                objCocktailByYear[year] = 1;
+            } else {
+                objCocktailByYear[year]++;
+            }
         }
     });
-    const labels = Object.keys(cocktailCountByYear);
-    const data = Object.values(cocktailCountByYear);
+
+    const labels = Object.keys(objCocktailByYear);
+    const data = Object.values(objCocktailByYear);
 
     chart = new Chart(ctx, {
         type: 'line',
@@ -40,10 +43,11 @@ const initChartLine = () => {
             },
             plugins: {
                 legend: {
+                    display: true,
                     labels: {
+                        color: 'white',
                         font: {
-                            size: 20,
-                            color: 'white'
+                            size: 18
                         }
                     }
                 }
@@ -55,7 +59,7 @@ initChartLine();
 
 const initChartPie = () => {
     const ctx = document.querySelector('#myChart2');
-    coFind = ['Gin', 'Vodka', 'Tequila', 'Rum', 'Whiskey'];
+    ingredientsToFind = ['Gin', 'Vodka', 'Tequila', 'Rum', 'Whiskey'];
     const objIngredientCount = {};
 
     ingredientsToFind.forEach(ingredientToFind => {
@@ -73,9 +77,9 @@ const initChartPie = () => {
             }
         });
     });
-
-    const labels = Object.keys(ingredientCounts);
-    const data = Object.values(ingredientCounts);
+    console.log(objIngredientCount)
+    const labels = Object.keys(objIngredientCount);
+    const data = Object.values(objIngredientCount);
 
     chart = new Chart(ctx, {
         type: 'pie',
@@ -96,6 +100,17 @@ const initChartPie = () => {
             ],
         },
         options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        color: 'white',
+                        font: {
+                            size: 18
+                        }
+                    }
+                }
+            }
         }
     });
 };
