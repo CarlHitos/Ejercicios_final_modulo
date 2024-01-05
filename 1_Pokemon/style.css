@@ -1,9 +1,4 @@
 body {
-/*     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; */
     background-color: rgb(31, 41, 46);
     color: white;
     font-family: sans-serif;
@@ -44,12 +39,10 @@ body {
 }
 
 #statsChart {
-    text-align: center;
+    width: 800px;
+    margin: 0 auto;text-align: center;
 }
 
 #myChart {
-/*     width:80%;
-    max-width:1200px;
-    max-height: 800px; */
     background-color: rgb(35, 54, 61);
 }

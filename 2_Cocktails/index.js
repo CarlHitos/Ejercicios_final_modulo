@@ -59,12 +59,13 @@ initChartLine();
 
 const initChartPie = () => {
     const ctx = document.querySelector('#myChart2');
-    ingredientsToFind = ['Gin', 'Vodka', 'Tequila', 'Rum', 'Whiskey'];
+    const ingredientsToFind = ['Gin', 'Vodka', 'Tequila', 'Rum', 'Whiskey'];
     const objIngredientCount = {};
 
     ingredientsToFind.forEach(ingredientToFind => {
         objIngredientCount[ingredientToFind] = 0;
     });
+    console.log(objIngredientCount)
     cocktails.forEach(cocktail => {
         ingredientsToFind.forEach(ingredientToFind => {
             for (let i = 1; i <= 15; i++) {

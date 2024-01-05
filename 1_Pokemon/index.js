@@ -34,10 +34,11 @@ const initChartBar = (labels, data) => {
             },
             plugins: {
                 legend: {
+                    display: true,
                     labels: {
+                        color: 'white',
                         font: {
-                            size: 20,
-                            color: 'white'
+                            size: 18
                         }
                     }
                 }
@@ -65,7 +66,7 @@ randomSearchButton.addEventListener('click', () => {
             const arrayStats = data.stats
             //Mostramos informacion del Pokemon
             document.querySelector('#pokemonName').textContent = pokemonName;
-            pokemonImage.src = data.sprites.front_default;
+            pokemonImage.src = data.sprites.other.dream_world.front_default;
 
             //RECORREMOS EL OBJETO PARA EXTRAER DATOS
             arrayStats.forEach(element => {

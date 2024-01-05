@@ -5,7 +5,7 @@ const cocktailDetails = document.getElementById('cocktailDetails');
 //     console.log(cocktail.strAlcoholic)
 // })
 
-function showCocktailDetails(cocktail) {
+const showCocktailDetails = (cocktail) => {
     document.getElementById('cocktailName').innerText = cocktail.strDrink;
     document.getElementById('cocktailImage').src = cocktail.strDrinkThumb;
     const ingredientsList = document.getElementById('ingredientsList');
