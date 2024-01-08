@@ -1,7 +1,9 @@
+//Creacion de constantes para manipular el DOM
 const taskList = document.getElementById('taskList');
 const taskForm = document.getElementById('taskForm');
 const completeAllTasks = document.getElementById('completeAllTasks');
 
+//Funcion para añadir las tareas
 const addTask = () => {
     const titleInput = document.getElementById('title');
     const descriptionInput = document.getElementById('description');
@@ -27,6 +29,7 @@ const addTask = () => {
     }
 }
 
+//Funcion para eliminar todas las tareas
 const removeAllTasks = () => {
     // while (taskList.firstChild) {
     //     taskList.removeChild(taskList.firstChild)
@@ -34,6 +37,7 @@ const removeAllTasks = () => {
     taskList.innerHTML = ''; 
 }
 
+//Funcion para ocultar y mostrar elementos
 const toggleCompleteAllButton = () => {
     const tasks = document.querySelectorAll('#taskList li');
     const imageDefault = document.getElementById('defaultImg');
@@ -46,6 +50,7 @@ const toggleCompleteAllButton = () => {
     }
 }
 
+//EvenListener de los botones
 taskForm.addEventListener('submit', (e) => {
     e.preventDefault();
     addTask();

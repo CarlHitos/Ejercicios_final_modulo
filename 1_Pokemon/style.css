@@ -8,7 +8,6 @@ body {
     cursor: pointer;
     padding: 15px;
     font-size: 1.1em;
-    margin-bottom: 2em;
     border-radius: 5px;
     background-color: rgb(41, 237, 237);
 }
@@ -38,11 +37,24 @@ body {
     margin-bottom: 30px;
 }
 
+#pokemonImage {
+    display: none;
+    width: 200px;
+    margin: 0 auto;
+}
+
 #statsChart {
     width: 800px;
-    margin: 0 auto;text-align: center;
+    margin: 0 auto;
+    text-align: center;
 }
 
 #myChart {
     background-color: rgb(35, 54, 61);
+    display: none;
+}
+
+#pokemonDefault {
+    width: 800px;
+    margin: 0 auto;
 }
