@@ -1,0 +1,50 @@
+body {
+    background-color: rgb(31, 41, 46);
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    width: 90%;
+}
+
+#main {
+    display: grid;
+    grid-template-columns: auto 30%;
+}
+
+h1 {
+    color: rgb(2, 5, 23);
+    filter: drop-shadow(0 0 0.3rem rgba(6, 247, 243, 0.969));
+    margin-bottom: 30px;
+}
+
+#statsChart {
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#myChart {
+    background-color: rgb(35, 54, 61);
+}
+
+#box-log {
+    height: fit-content;
+    background: rgb(86,171,172);
+    background: linear-gradient(0deg, rgba(86,171,172,0.7708333333333334) 44%, rgba(90,99,107,1) 100%);
+    color: aliceblue;
+    outline: 1px solid aqua;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    font-family: sans-serif;
+    width: auto;
+}
+
+h2 {
+    border-bottom: 2px solid black;
+}
+
+#war-log {
+    padding: 0 5px;
+    list-style: none;
+}
