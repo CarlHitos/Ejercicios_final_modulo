@@ -1,47 +1,3 @@
-
-const initChartBar = (labels, data) => {
-    const ctx = document.querySelector('#myChart');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels,
-            datasets: [
-                {
-                    backgroundColor: "rgb(25, 236, 236)",
-                    label: "Amount Lives",
-                    data,
-                },
-            ],
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        color: 'white',
-                    }
-                },
-                x: {
-                    ticks: {
-                        color: 'white',
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: true,
-                    labels: {
-                        color: 'white',
-                        font: {
-                            size: 18
-                        }
-                    }
-                }
-            }
-        }
-    });
-};
-
 class Player {
     constructor(name, amountLives, damage) {
         this.name = name;
@@ -52,8 +8,8 @@ class Player {
         return this.damage;
     }
     updateLives(amount) {
-        this.amountLives -= amount;
-        updateChart();
+        this.amountLives = Math.max(0, this.amountLives - amount);
+        updateChart(myChart, team1, team2);
     }
 
 }
@@ -116,15 +72,15 @@ class snowWar {
             const receiverTeam1 = this.selectRandomPlayers(this.team1)
 
             const hurtTeam1 = attackerTeam1.snowballThrow();
-            receiverTeam2.amountLives(hurtTeam1);
-            warLog.innerHTML += `${attackerTeam1.name} hurt ${receiverTeam2.name}. Remaining lives of ${receiverTeam2.name}: ${receiverTeam2.amountLives}<br>`;
+            receiverTeam2.updateLives(hurtTeam1);
+            warLog.innerHTML += `<p class="styleTeam1">${attackerTeam1.name}</p> hurt <p class="styleTeam2">${receiverTeam2.name}</p>. Remaining lives of <p class="styleTeam2">${receiverTeam2.name}</p>: ${receiverTeam2.amountLives}<br>`;
 
             if (this.team2.losingTeam()) {
                 clearInterval(interval);
                 winnerMessage.innerHTML = 'Team 1 has won the war';
             } else {
                 const hurtTeam2 = attackerTeam2.snowballThrow();
-                receiverTeam1.amountLives(hurtTeam2);
+                receiverTeam1.updateLives(hurtTeam2);
                 warLog.innerHTML += `${attackerTeam2.name} hurt ${receiverTeam1.name}. Remaining lives of ${receiverTeam1.name}: ${receiverTeam1.amountLives}<br>`;
 
                 if (this.team1.losingTeam()) {
@@ -136,6 +92,25 @@ class snowWar {
     }
 }
 
+const updateChart = (myChart, team1, team2) => {
+    // Obtenemos valores para el Chart
+    const amountLivesPlayers = {};
+
+    team1.players.forEach((element) => {
+        const namePLayers = element.name;
+        const livesPLayers = element.amountLives;
+        amountLivesPlayers[namePLayers] = livesPLayers;
+    })
+
+    team2.players.forEach((element) => {
+        const namePLayers = element.name;
+        const livesPLayers = element.amountLives;
+        amountLivesPlayers[namePLayers] = livesPLayers;
+    })
+    myChart.data.labels = Object.keys(amountLivesPlayers);
+    myChart.data.datasets[0].data = Object.values(amountLivesPlayers);
+    myChart.update();
+}
 
 // TEST
 
@@ -154,32 +129,48 @@ team2.addPlayer(new Wizard('WIZARD2_EQ2'));
 team2.addPlayer(new Warrior('WARRIOR3_EQ2'));
 team2.addPlayer(new Wizard('WIZARD3_EQ2'));
 
-const updateChart = () => {
-    // Obtenemos valores para el Chart
-    const amountLivesPlayers = {};
+const ctx = document.querySelector('#myChart');
+const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [],
+            datasets: [
+                {
+                    backgroundColor: "rgb(25, 236, 236)",
+                    label: "Amount Lives",
+                    data: [],
+                },
+            ],
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: 'white',
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: 'white',
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        color: 'white',
+                        font: {
+                            size: 18
+                        }
+                    }
+                }
+            }
+        }
+});
 
-    team1.players.forEach((element) => {
-        const namePLayers = element.name;
-        const livesPLayers = element.amountLives;
-        amountLivesPlayers[namePLayers] = livesPLayers;
-    })
+updateChart(myChart, team1, team2);
 
-    team2.players.forEach((element) => {
-        const namePLayers = element.name;
-        const livesPLayers = element.amountLives;
-        amountLivesPlayers[namePLayers] = livesPLayers;
-    })
-    myChart.data.labels = Object.keys(amountLivesPlayers);
-    myChart.datasets[0].data = Object.values(amountLivesPlayers);
-    myChart.update();
-
-}
-
-
-const labels = Object.keys(amountLivesPlayers);
-const data = Object.values(amountLivesPlayers);
-initChartBar(labels, data);
-
-//Inicializamos la guerra
 const war = new snowWar(team1, team2);
 war.simulate();
