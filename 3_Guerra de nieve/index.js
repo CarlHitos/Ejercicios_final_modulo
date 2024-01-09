@@ -73,7 +73,7 @@ class snowWar {
 
             const hurtTeam1 = attackerTeam1.snowballThrow();
             receiverTeam2.updateLives(hurtTeam1);
-            warLog.innerHTML += `<p class="styleTeam1">${attackerTeam1.name}</p> hurt <p class="styleTeam2">${receiverTeam2.name}</p>. Remaining lives of <p class="styleTeam2">${receiverTeam2.name}</p>: ${receiverTeam2.amountLives}<br>`;
+            warLog.innerHTML += `<span class="logStyle"><span class="styleTeam1">${attackerTeam1.name}</span> hurt <span class="styleTeam2">${receiverTeam2.name}</span>.<br>Remaining lives of <span class="styleTeam2">${receiverTeam2.name}</span>: ${receiverTeam2.amountLives}</span><br>`;
 
             if (this.team2.losingTeam()) {
                 clearInterval(interval);
@@ -81,7 +81,7 @@ class snowWar {
             } else {
                 const hurtTeam2 = attackerTeam2.snowballThrow();
                 receiverTeam1.updateLives(hurtTeam2);
-                warLog.innerHTML += `${attackerTeam2.name} hurt ${receiverTeam1.name}. Remaining lives of ${receiverTeam1.name}: ${receiverTeam1.amountLives}<br>`;
+                warLog.innerHTML += `<span class="logStyle"><span class="styleTeam2">${attackerTeam2.name}</span> hurt <span class="styleTeam1">${receiverTeam1.name}</span>.<br>Remaining lives of <span class="styleTeam1">${receiverTeam1.name}</span>: ${receiverTeam1.amountLives}</span><br>`;
 
                 if (this.team1.losingTeam()) {
                     clearInterval(interval);
@@ -112,7 +112,7 @@ const updateChart = (myChart, team1, team2) => {
     myChart.update();
 }
 
-// TEST
+// Creamos equipos y jugadores
 
 const team1 = new Team();
 const team2 = new Team();
@@ -129,6 +129,7 @@ team2.addPlayer(new Wizard('WIZARD2_EQ2'));
 team2.addPlayer(new Warrior('WARRIOR3_EQ2'));
 team2.addPlayer(new Wizard('WIZARD3_EQ2'));
 
+//Creamos Chart
 const ctx = document.querySelector('#myChart');
 const myChart = new Chart(ctx, {
         type: 'bar',
@@ -170,7 +171,9 @@ const myChart = new Chart(ctx, {
         }
 });
 
+//llamamos a la funcion para actualizar valores del chart
 updateChart(myChart, team1, team2);
 
+//Ejecutamos el metodo para simular la guerra
 const war = new snowWar(team1, team2);
 war.simulate();
