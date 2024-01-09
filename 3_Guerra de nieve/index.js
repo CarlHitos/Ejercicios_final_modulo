@@ -73,7 +73,7 @@ class snowWar {
 
             const hurtTeam1 = attackerTeam1.snowballThrow();
             receiverTeam2.updateLives(hurtTeam1);
-            warLog.innerHTML += `<span class="logStyle"><span class="styleTeam1">${attackerTeam1.name}</span> hurt <span class="styleTeam2">${receiverTeam2.name}</span>.<br>Remaining lives of <span class="styleTeam2">${receiverTeam2.name}</span>: ${receiverTeam2.amountLives}</span><br>`;
+            warLog.innerHTML += `<span class="logStyle"><span class="styleTeam1">${attackerTeam1.name}</span> hurt💥 <span class="styleTeam2">${receiverTeam2.name}</span>.<br>Remaining lives of <span class="styleTeam2">${receiverTeam2.name}</span>: ${receiverTeam2.amountLives}</span><br>`;
 
             if (this.team2.losingTeam()) {
                 clearInterval(interval);
@@ -81,7 +81,7 @@ class snowWar {
             } else {
                 const hurtTeam2 = attackerTeam2.snowballThrow();
                 receiverTeam1.updateLives(hurtTeam2);
-                warLog.innerHTML += `<span class="logStyle"><span class="styleTeam2">${attackerTeam2.name}</span> hurt <span class="styleTeam1">${receiverTeam1.name}</span>.<br>Remaining lives of <span class="styleTeam1">${receiverTeam1.name}</span>: ${receiverTeam1.amountLives}</span><br>`;
+                warLog.innerHTML += `<span class="logStyle"><span class="styleTeam2">${attackerTeam2.name}</span> hurt💥 <span class="styleTeam1">${receiverTeam1.name}</span>.<br>Remaining lives of <span class="styleTeam1">${receiverTeam1.name}</span>: ${receiverTeam1.amountLives}</span><br>`;
 
                 if (this.team1.losingTeam()) {
                     clearInterval(interval);
