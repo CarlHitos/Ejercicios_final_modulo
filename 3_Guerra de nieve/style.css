@@ -25,6 +25,7 @@ h1 {
 
 #myChart {
     background-color: rgb(35, 54, 61);
+    width: fit-content;
 }
 
 #box-log {
@@ -64,4 +65,31 @@ h2 {
 .styleTeam2 {
     font-weight: bold;
     color: rgb(177, 212, 80);
+}
+
+#btnSimulate {
+    text-decoration: none;
+    cursor: pointer;
+    margin: 5px;
+    padding: 15px 20px;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(59deg, rgba(2, 0, 36, 1) 0%, rgba(136, 136, 187, 1) 50%, rgba(0, 212, 255, 1) 100%);
+    border-radius: 5px;
+    font-weight: bold;
+    color: rgb(2, 5, 23);
+    font-size: 20px;
+}
+
+#btnSimulate:after {
+    content: "";
+    display: block;
+    margin: auto;
+    height: 2px;
+    width: 0px;
+    transition: all .9s;
+}
+
+#btnSimulate:hover:after {
+    width: 100%;
+    background: aqua;
 }

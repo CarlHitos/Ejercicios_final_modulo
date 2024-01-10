@@ -1,3 +1,4 @@
+let simulationRunning = false;
 class Player {
     constructor(name, amountLives, damage) {
         this.name = name;
@@ -87,6 +88,7 @@ class snowWar {
                     clearInterval(interval);
                     winnerMessage.innerHTML = 'Team 2 has won the war';
                 }
+                simulationRunning = false;
             }
         }, Math.floor(Math.random() * 3000) + 1000)
     }
@@ -121,6 +123,8 @@ team1.addPlayer(new Warrior('Warrior1_EQ1'));
 team1.addPlayer(new Wizard('Wizard1_EQ1'));
 team1.addPlayer(new Warrior('Warrior2_EQ1'));
 team1.addPlayer(new Wizard('Wizard2_EQ1'));
+team1.addPlayer(new Wizard('Wizard3_EQ1'));
+team1.addPlayer(new Wizard('Wizard4_EQ1'));
 
 team2.addPlayer(new Warrior('WARRIOR1_EQ2'));
 team2.addPlayer(new Wizard('WIZARD1_EQ2'));
@@ -174,6 +178,19 @@ const myChart = new Chart(ctx, {
 //llamamos a la funcion para actualizar valores del chart
 updateChart(myChart, team1, team2);
 
-//Ejecutamos el metodo para simular la guerra
 const war = new snowWar(team1, team2);
-war.simulate();
+
+const button = document.getElementById('btnSimulate')
+
+//Añadimos evento boton para realizar simulacion
+button.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    if (!simulationRunning) {
+        war.simulate();
+        simulationRunning = true;
+    }else {
+        window.location.reload();
+    }
+})
+
